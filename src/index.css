@@ -1,0 +1,155 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f5f3ee;
+  --card: #ffffff;
+  --text: #1a1916;
+  --text2: #6b6860;
+  --text3: #9c9a93;
+  --border: #e2dfd6;
+  --teal: #0f6e56;
+  --teal-light: #e1f5ee;
+  --teal-dark: #085041;
+  --blue: #185fa5;
+  --blue-light: #e6f1fb;
+  --danger: #993c1d;
+  --danger-light: #faece7;
+  --success: #3b6d11;
+  --success-light: #eaf3de;
+  --shadow: 0 2px 12px rgba(26,25,22,0.08);
+  --radius: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body { background: var(--bg); color: var(--text); min-height: 100vh; }
+
+button {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+}
+
+input, select, textarea {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+
+.btn {
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.btn-primary { background: var(--teal); color: white; }
+.btn-primary:hover { background: var(--teal-dark); }
+.btn-secondary { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { background: var(--bg); }
+.btn-danger { background: var(--danger-light); color: var(--danger); }
+.btn-danger:hover { background: #f5c4b3; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.2s;
+}
+
+.btn {
+  transition: all 0.15s ease;
+}
+.btn:active { transform: scale(0.98); }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+.input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--card);
+  color: var(--text);
+}
+
+.input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,110,86,0.12); }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.badge-teal { background: var(--teal-light); color: var(--teal-dark); }
+.badge-blue { background: var(--blue-light); color: var(--blue); }
+.badge-danger { background: var(--danger-light); color: var(--danger); }
+.badge-purple { background: #f3e8ff; color: #7c3aed; }
+.badge-success { background: var(--success-light); color: var(--success); }
+
+table { width: 100%; border-collapse: collapse; }
+th { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.5px; padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+td { padding: 12px 14px; font-size: 14px; border-bottom: 1px solid var(--border); }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bg); }
+
+.mono { font-family: 'DM Mono', monospace; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Struk 58mm — hanya tampak saat print, sembunyi di layar normal ── */
+.struk-58mm {
+  display: none;
+}
+
+.struk-58mm .struk-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+.struk-58mm .struk-center { text-align: center; }
+.struk-58mm .struk-bold { font-weight: 700; }
+.struk-58mm .struk-lg { font-size: 13px; }
+.struk-58mm .struk-sm { font-size: 10px; }
+.struk-58mm .struk-divider {
+  border-top: 1px dashed #000;
+  margin: 4px 0;
+}
+.struk-58mm .struk-item { margin-bottom: 2px; }
+
+@media print {
+  @page {
+    size: 58mm auto;
+    margin: 0;
+  }
+  body * {
+    visibility: hidden;
+  }
+  #struk-print-area, #struk-print-area * {
+    visibility: visible;
+  }
+  .struk-58mm {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 58mm;
+    padding: 2mm;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #000;
+  }
+}
